@@ -30,7 +30,7 @@ func main() {
 	}
 	defer cli.Close()
 
-	// 创建/获取队列
+	// 创建/获取栅栏 
 	b := recipe.NewBarrier(cli, *barrierName)
 
 	// 从命令行读取命令
