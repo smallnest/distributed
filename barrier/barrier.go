@@ -14,7 +14,7 @@ import (
 
 var (
 	addr        = flag.String("addr", "http://127.0.0.1:2379", "etcd addresses")
-	barrierName = flag.String("name", "my-test-queue", "barrier name")
+	barrierName = flag.String("name", "my-test-barrier", "barrier name")
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 	}
 	defer cli.Close()
 
-	// 创建/获取栅栏 
+	// 创建/获取栅栏
 	b := recipe.NewBarrier(cli, *barrierName)
 
 	// 从命令行读取命令
