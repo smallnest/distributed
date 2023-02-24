@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/coreos/etcd/clientv3"
-	recipe "github.com/coreos/etcd/contrib/recipes"
+	clientv3 "go.etcd.io/etcd/client/v3"
+	recipe "go.etcd.io/etcd/client/v3/experimental/recipes"
 )
 
 var (

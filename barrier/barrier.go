@@ -8,8 +8,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/coreos/etcd/clientv3"
-	recipe "github.com/coreos/etcd/contrib/recipes"
+	clientv3 "go.etcd.io/etcd/client/v3"
+	recipe "go.etcd.io/etcd/client/v3/experimental/recipes"
 )
 
 var (
@@ -39,19 +39,31 @@ func main() {
 		action := consolescanner.Text()
 		items := strings.Split(action, " ")
 		switch items[0] {
-		case "hold": // 持有这个barrier
-			b.Hold()
-			fmt.Println("hold")
-		case "release": // 释放这个barrier
-			b.Release()
-			fmt.Println("released")
-		case "wait": // 等待barrier被释放
-			b.Wait()
-			fmt.Println("after wait")
-		case "quit", "exit": //退出
+		case "hold":
+			holdBarrier(b)
+		case "release":
+			releaseBarrier(b)
+		case "wait":
+			waitBarrier(b)
+		case "quit", "exit":
 			return
 		default:
 			fmt.Println("unknown action")
 		}
 	}
+}
+
+func holdBarrier(b *recipe.Barrier) {
+	b.Hold()
+	fmt.Println("hold")
+}
+
+func releaseBarrier(b *recipe.Barrier) {
+	b.Release()
+	fmt.Println("released")
+}
+
+func waitBarrier(b *recipe.Barrier) {
+	b.Wait()
+	fmt.Println("after wait")
 }

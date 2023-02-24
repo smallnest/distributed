@@ -8,9 +8,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/coreos/etcd/clientv3"
-	"github.com/coreos/etcd/clientv3/concurrency"
-	recipe "github.com/coreos/etcd/contrib/recipes"
+	clientv3 "go.etcd.io/etcd/client/v3"
+	"go.etcd.io/etcd/client/v3/concurrency"
+	recipe "go.etcd.io/etcd/client/v3/experimental/recipes"
 )
 
 var (
